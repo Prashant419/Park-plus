@@ -1,5 +1,6 @@
 package com.driver.controllers;
 
+import com.driver.model.Reservation;
 import com.driver.services.impl.ReservationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ public class ReservationController {
         //Note that the vehicle can only be parked in a spot having a type equal to or larger than given vehicle
         //If parkingLot is not found, user is not found, or no spot is available, throw "Cannot make reservation" exception.
 
-        return null;
+        Reservation reservation = reservationService.reserveSpot(userId, parkingLotId, timeInHours, numberOfWheels);
+        return reservation;
     }
 }

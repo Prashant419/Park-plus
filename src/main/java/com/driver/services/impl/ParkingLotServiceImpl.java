@@ -1,43 +1,17 @@
-package com.driver.services.impl;
+package com.driver.services;
 
-import com.driver.model.SpotType;
-import com.driver.repository.ParkingLotRepository;
-import com.driver.repository.SpotRepository;
-import com.driver.services.ParkingLotService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.driver.model.ParkingLot;
+import com.driver.model.Spot;
 
-import java.util.ArrayList;
-import java.util.List;
+public interface ParkingLotService {
 
-@Service
-public class ParkingLotServiceImpl implements ParkingLotService {
-    @Autowired
-    ParkingLotRepository parkingLotRepository1;
-    @Autowired
-    SpotRepository spotRepository1;
-    @Override
-    public ParkingLot addParkingLot(String name, String address) {
+    void deleteSpot(int spotId);
 
-    }
+    Spot updateSpot(int parkingLotId, int spotId, int pricePerHour);
 
-    @Override
-    public Spot addSpot(int parkingLotId, Integer numberOfWheels, Integer pricePerHour) {
+    void deleteParkingLot(int parkingLotId);
 
-    }
+    ParkingLot addParkingLot(String name, String address);
 
-    @Override
-    public void deleteSpot(int spotId) {
-
-    }
-
-    @Override
-    public Spot updateSpot(int parkingLotId, int spotId, int pricePerHour) {
-
-    }
-
-    @Override
-    public void deleteParkingLot(int parkingLotId) {
-
-    }
+    Spot addSpot(int parkingLotId, Integer numberOfWheels, Integer pricePerHour);
 }
