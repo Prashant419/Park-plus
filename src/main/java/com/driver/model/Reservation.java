@@ -3,11 +3,9 @@ package com.driver.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "reservation")
 public class Reservation {
-
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private int numberOfHours;

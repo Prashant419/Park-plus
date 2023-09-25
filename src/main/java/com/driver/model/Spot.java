@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "spot")
 public class Spot {
-
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Enumerated(value = EnumType.STRING)
+
+    @Enumerated(EnumType.STRING)
     private SpotType spotType;
+
     private int pricePerHour;
-    Boolean occupied=false;
+    private boolean occupied;
 
     @ManyToOne
     @JoinColumn
@@ -26,7 +26,8 @@ public class Spot {
     public Spot() {
     }
 
-    public Spot(int id, SpotType spotType, int pricePerHour, Boolean occupied, ParkingLot parkingLot, List<Reservation> reservationList) {
+    public Spot(int id, SpotType spotType, int pricePerHour, boolean occupied,
+                ParkingLot parkingLot, List<Reservation> reservationList) {
         this.id = id;
         this.spotType = spotType;
         this.pricePerHour = pricePerHour;
@@ -59,11 +60,11 @@ public class Spot {
         this.pricePerHour = pricePerHour;
     }
 
-    public Boolean getOccupied() {
+    public boolean getOccupied() {
         return occupied;
     }
 
-    public void setOccupied(Boolean occupied) {
+    public void setOccupied(boolean occupied) {
         this.occupied = occupied;
     }
 
