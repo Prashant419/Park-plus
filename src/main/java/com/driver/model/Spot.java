@@ -5,16 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "spot")
 public class Spot {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Enumerated(value = EnumType.STRING)
-    private SpotType spotType;
+
     private int pricePerHour;
-    Boolean occupied = false;
+
+    private boolean occupied;
+
+    @Enumerated(EnumType.STRING)
+    private SpotType spotType;  // two-wheeler, four-wheeler, others
 
     @ManyToOne
     @JoinColumn
@@ -26,11 +28,11 @@ public class Spot {
     public Spot() {
     }
 
-    public Spot(int id, SpotType spotType, int pricePerHour, Boolean occupied, ParkingLot parkingLot, List<Reservation> reservationList) {
+    public Spot(int id, int pricePerHour, boolean occupied, SpotType spotType, ParkingLot parkingLot, List<Reservation> reservationList) {
         this.id = id;
-        this.spotType = spotType;
         this.pricePerHour = pricePerHour;
         this.occupied = occupied;
+        this.spotType = spotType;
         this.parkingLot = parkingLot;
         this.reservationList = reservationList;
     }
@@ -43,14 +45,6 @@ public class Spot {
         this.id = id;
     }
 
-    public SpotType getSpotType() {
-        return spotType;
-    }
-
-    public void setSpotType(SpotType spotType) {
-        this.spotType = spotType;
-    }
-
     public int getPricePerHour() {
         return pricePerHour;
     }
@@ -59,12 +53,20 @@ public class Spot {
         this.pricePerHour = pricePerHour;
     }
 
-    public Boolean getOccupied() {
+    public boolean getOccupied() {
         return occupied;
     }
 
-    public void setOccupied(Boolean occupied) {
+    public void setOccupied(boolean occupied) {
         this.occupied = occupied;
+    }
+
+    public SpotType getSpotType() {
+        return spotType;
+    }
+
+    public void setSpotType(SpotType spotType) {
+        this.spotType = spotType;
     }
 
     public ParkingLot getParkingLot() {
